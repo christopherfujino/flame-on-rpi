@@ -4,7 +4,7 @@ GAME = third_party/flame_perfomance_test_game
 THIRD_PARTIES = $(REVEAL_JS)/index.html \
 								$(GAME)/README.md
 
-build: reveal_js
+build: $(REVEAL_JS_BUILD)
 
 present: $(REVEAL_JS_BUILD)
 	cd $(REVEAL_JS) && npm run start
