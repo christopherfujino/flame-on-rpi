@@ -69,6 +69,7 @@ struct ButtonPress parsePress(struct js_event e) {
           button = Start;
           break;
         default:
+          // TODO just ignore these
           fprintf(stderr, "Oops! Unsupported button: %i\n", e.number);
           exit(1);
       }
@@ -115,6 +116,7 @@ struct ButtonPress parsePress(struct js_event e) {
 void flushFD(int fd) {
   struct js_event e;
   ssize_t bytes_read;
+  //printf("Beginning flushFD with %i...\n", fd);
   while (read(fd, &e, sizeof(e)) > 0) {
     if (e.type & JS_EVENT_INIT) {
       // ignore
@@ -125,15 +127,22 @@ void flushFD(int fd) {
     printf("\ttype\t= %i\n", buttonPress.pressType);
   }
   if (errno != EAGAIN) {
-    fprintf(stderr, "Oops! %d\n", errno);
+    fprintf(stderr, "Oops! Error reading: %d\n", errno);
     exit(1);
   }
+  //printf("Exiting flushFD...\n");
+}
+
+int openFD() {
+  char device[] = "/dev/input/js0";
+  int fd = open(device, O_NONBLOCK);
+  printf("Opened %i\n", fd);
+  return fd;
 }
 
 int main() {
-  char device[] = "/dev/input/js0";
 
-  int joystick = open(device, O_NONBLOCK);
+  int joystick = openFD();
   while(1) {
     flushFD(joystick);
   }
