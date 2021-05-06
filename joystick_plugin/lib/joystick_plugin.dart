@@ -10,12 +10,12 @@ typedef AddDart = int Function(int x, int y);
 
 final AddDart add = joystickLib.lookup<ffi.NativeFunction<AddC>>('add').asFunction();
 
-class JoystickPlugin {
-  static const MethodChannel _channel =
-      const MethodChannel('joystick_plugin');
+typedef OpenFDC = ffi.Int32 Function();
+typedef OpenFDDart = int Function();
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-}
+final OpenFDDart openFD = joystickLib.lookup<ffi.NativeFunction<OpenFDC>>('openFD').asFunction();
+
+typedef FlushFDC = ffi.Int32 Function(ffi.Int32 fd);
+typedef FlushFDDart = int Function(int fd);
+
+final FlushFDDart flushFD = joystickLib.lookup<ffi.NativeFunction<FlushFDC>>('flushFD').asFunction();

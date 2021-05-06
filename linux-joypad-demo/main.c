@@ -1,5 +1,5 @@
-// For manipulating file descriptors
 #include <errno.h> // errno
+// For manipulating file descriptors
 #include <fcntl.h> // for open(), O_RDONLY
 #include <stdio.h>
 #include <stdlib.h> // for exit()
