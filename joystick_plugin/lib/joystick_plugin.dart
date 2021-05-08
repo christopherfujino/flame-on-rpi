@@ -35,3 +35,8 @@ typedef FlushFDC = Pointer<JSEvent> Function(Int32 fd);
 typedef FlushFDDart = Pointer<JSEvent> Function(int fd);
 
 final FlushFDDart flushFD = joystickLib.lookup<NativeFunction<FlushFDC>>('flushFD').asFunction();
+
+// These are defined in linux/joystick.h
+const int JS_EVENT_BUTTON = 0x01;
+const int JS_EVENT_AXIS = 0x02;
+const int JS_EVENT_INIT = 0x80;
