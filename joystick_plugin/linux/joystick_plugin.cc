@@ -19,133 +19,32 @@
                               JoystickPlugin))
 
 // start my code
-enum Button {
-  Up = 0,
-  Right = 1,
-  Down = 2,
-  Left = 3,
-  Y = 4,
-  B = 5,
-  A = 6,
-  X = 7,
-  L = 8,
-  R = 9,
-  Select = 10,
-  Start = 11,
-};
-
-enum PressType {
-  UpPress = 0,
-  DownPress = 1,
-};
-
-struct ButtonPress {
-  enum Button button;
-  enum PressType pressType;
-};
-
-struct ButtonPress parsePress(struct js_event e) {
-  static Button lastX = Left; // Arbitrary initial value
-  static Button lastY = Up; // Arbitrary initial value
-  enum PressType pressType;
-  enum Button button;
-
-  printf("Read successful:\n");
-  switch (e.type) {
-    case JS_EVENT_BUTTON:
-      pressType = e.value == 1 ? DownPress : UpPress;
-      switch (e.number) {
-        case 0:
-          button = A;
-          break;
-        case 1:
-          button = B;
-          break;
-        case 2:
-          button = X;
-          break;
-        case 3:
-          button = Y;
-          break;
-        case 4:
-          button = L;
-          break;
-        case 5:
-          button = R;
-          break;
-        case 6:
-          button = Select;
-          break;
-        case 7:
-          button = Start;
-          break;
-        default:
-          // TODO just ignore these
-          fprintf(stderr, "Oops! Unsupported button: %i\n", e.number);
-          exit(1);
-      }
-      break;
-    case JS_EVENT_AXIS:
-      switch (e.number) {
-        case 6: // X-axis
-          if (e.value > 0) {
-            button = lastX = Right;
-            pressType = DownPress;
-          } else if (e.value < 0) {
-            button = lastX = Left;
-            pressType = DownPress;
-          } else {
-            button = lastX;
-            pressType = UpPress;
-          }
-          break;
-        case 7: // Y-axis
-          if (e.value > 0) {
-            button = lastY = Down;
-            pressType = DownPress;
-          } else if (e.value < 0) {
-            button = lastY = Up;
-            pressType = DownPress;
-          } else {
-            button = lastY;
-            pressType = UpPress;
-          }
-          break;
-      }
-      break;
-    default:
-      fprintf(stderr, "Oops! unknown js_event.type: 0x%x\n", e.type);
-      exit(1);
-  }
-
-  return (struct ButtonPress){
-    .button = button,
-    .pressType = pressType,
-  };
-}
+struct js_event global_event;
 
 extern "C" __attribute__((visibility("default"))) __attribute__((used))
-int flushFD(int fd) {
+struct js_event *flushFD(int fd) {
   struct js_event e;
   ssize_t bytes_read;
   bytes_read = read(fd, &e, sizeof(e));
   if (bytes_read <= 0) {
+    // errno will be EAGAIN when there is nothing to read from the buffer
     if (errno != EAGAIN) {
       fprintf(stderr, "Oops! Error reading: %d\n", errno);
       exit(1);
     }
     // no events to flush
-    return -1;
+    return nullptr;
   }
+  // These are not true events, but initialization events to ID available
+  // buttons.
   if (e.type & JS_EVENT_INIT) {
-    // ignore
-    return -2; // TODO huh?
+    // These are ignored
+    // If you want to dynamically map these buttons from your Flutter code, you
+    // must return these events
+    return nullptr;
   }
-  struct ButtonPress buttonPress = parsePress(e);
-  printf("\tbutton\t= %i\n", buttonPress.button);
-  printf("\ttype\t= %i\n", buttonPress.pressType);
-  return buttonPress.button;
-  //printf("Exiting flushFD...\n");
+  global_event = e;
+  return &global_event;
 }
 
 extern "C" __attribute__((visibility("default"))) __attribute__((used))
