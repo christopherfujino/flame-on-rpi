@@ -10,7 +10,7 @@ present: $(REVEAL_JS_BUILD)
 	cd $(REVEAL_JS) && npm run start
 
 $(REVEAL_JS_BUILD): $(THIRD_PARTIES)
-	cd $(REVEAL_JS) && npm install && npm run build
+	cd $(REVEAL_JS) && npm install
 
 $(THIRD_PARTIES):
 	git submodule init

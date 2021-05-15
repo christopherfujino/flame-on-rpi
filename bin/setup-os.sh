@@ -14,6 +14,8 @@ git config --global user.name 'Christopher Fujino'
 
 sudo apt-get update
 sudo apt-get upgrade --yes
+
+# npm & python needed for reveal.js
 sudo apt-get install --yes\
 	git \
 	make \
@@ -22,4 +24,6 @@ sudo apt-get install --yes\
 	cmake \
 	libgtk-3-dev \
 	ninja-build \
-	vim
+	vim \
+	npm \
+	python
