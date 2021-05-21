@@ -16,6 +16,7 @@ sudo apt-get update
 sudo apt-get upgrade --yes
 
 # npm & python needed for reveal.js
+# liblzma-dev for app
 sudo apt-get install --yes\
 	git \
 	make \
@@ -26,4 +27,5 @@ sudo apt-get install --yes\
 	ninja-build \
 	vim \
 	npm \
-	python
+	python \
+	liblzma-dev

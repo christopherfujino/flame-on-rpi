@@ -9,8 +9,6 @@ Tested with:
 
 ## OS
 
-`$ apt-get install make curl clang cmake ninja-build libgtk-3-dev vim liblzma-dev libgles2-mesa libgles2-mesa-dev xorg-dev`
-
 https://www.dedoimedo.com/computers/rpi4-ubuntu-mate-hw-video-acceleration.html
 
 ## Flutter
