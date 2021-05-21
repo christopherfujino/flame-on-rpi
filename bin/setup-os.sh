@@ -28,4 +28,16 @@ sudo apt-get install --yes\
 	vim \
 	npm \
 	python \
-	liblzma-dev
+	liblzma-dev \
+  libgl1-mesa-dev \
+  libgles2-mesa-dev \
+  libegl1-mesa-dev \
+  libdrm-dev \
+  libgbm-dev \
+  ttf-mscorefonts-installer \
+  fontconfig \
+  libsystemd-dev \
+  libinput-dev \
+  libudev-dev \
+  libxkbcommon-dev \
+  raspi-config

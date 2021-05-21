@@ -25,4 +25,11 @@ Must install from source.
 
 ### On Arm64
 
+## Debugging
+
+```
+dart pub global activate devtools
+ssh -L $PORT:localhost:$PORT $USER@$RASPBERRY_PI_IP
+dart pub global run devtools
+```
 
