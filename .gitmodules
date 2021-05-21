@@ -4,6 +4,3 @@
 [submodule "third_party/reveal.js"]
 	path = third_party/reveal.js
 	url = git@github.com:christopherfujino/reveal.js.git
-[submodule "third_party/flutter"]
-	path = third_party/flutter
-	url = git@github.com:flutter/flutter.git
