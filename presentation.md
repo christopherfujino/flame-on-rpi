@@ -8,6 +8,7 @@ My name is Christopher Fujino
 https://github.com/christopherfujino/flame-on-rpi
 
 ## Disclaimers
+
 - I am not paid to build Flutter apps
 - I am not paid to speak--opinions are my own
 - This workflow is a proof of concept, but not production-ready
@@ -75,3 +76,8 @@ of Raspberry Pi OS 64-bit.
 - Flame Engine 1.0.0-releasecandidate.11
 - Raspberry Pi 4b 8gb model
 - Raspberry Pi OS ARM64 [2021-04-09 build](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip)
+
+## Caveats
+
+- No official IDE support (maybe [VSCodium](https://github.com/VSCodium/vscodium))
+
