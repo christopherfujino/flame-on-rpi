@@ -18,17 +18,16 @@ sudo apt-get upgrade --yes
 # npm & python needed for reveal.js
 # liblzma-dev for app
 sudo apt-get install --yes\
-	git \
-	make \
-	curl \
-	clang \
-	cmake \
-	libgtk-3-dev \
-	ninja-build \
-	vim \
-	npm \
-	python \
-	liblzma-dev \
+  git \
+  make \
+  curl \
+  clang \
+  cmake \
+  libgtk-3-dev \
+  ninja-build \
+  vim \
+  python \
+  liblzma-dev \
   libgl1-mesa-dev \
   libgles2-mesa-dev \
   libegl1-mesa-dev \
@@ -39,5 +38,4 @@ sudo apt-get install --yes\
   libsystemd-dev \
   libinput-dev \
   libudev-dev \
-  libxkbcommon-dev \
-  raspi-config
+  libxkbcommon-dev
