@@ -13,6 +13,24 @@ https://github.com/christopherfujino/flame-on-rpi
 - I am not paid to speak--opinions are my own
 - This workflow is a proof of concept, but not production-ready
 
+## Objectives
+
+- Retro console-style game
+- Stable Flutter and Flame versions
+- Build and run game from Raspberry Pi
+
+## The Game
+
+Video (demo of shooter game in android emulator)
+
+## The Game on Raspberry Pi
+
+Video (demo of shooter game on raspberry pi, with mouse UI)
+
+## Thank you
+
+Thanks!
+
 ## Tree
 
 Flame on Raspberry Pi
@@ -48,7 +66,7 @@ https://www.youtube.com/watch?v=NNol7fRGo2E
 
 - supports both 32-bit and 64-bit kernels
 
-## What is the Raspberry Pi 4b?
+## What is the Raspberry Pi?
 
 > Your tiny, dual-display, desktop computer and robot brains, smart home hub,
 > media centre, networked AI core, factory controller, and much more.
@@ -72,12 +90,23 @@ of Raspberry Pi OS 64-bit.
 
 ## Setup
 
-- Flutter 2.0.0 Stable
-- Flame Engine 1.0.0-releasecandidate.11
 - Raspberry Pi 4b 8gb model
 - Raspberry Pi OS ARM64 [2021-04-09 build](https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2021-04-09/2021-03-04-raspios-buster-arm64.zip)
+- Flutter 2.0.0 Stable
+  - On Ubuntu I had to use the snap, on Raspberry Pi OS I had to use from source
+- Flame Engine 1.0.0-releasecandidate.11
+- Linux x64 Desktop Machine for testing (optional but recommended)
 
-## Caveats
+## Gamepad
 
-- No official IDE support (maybe [VSCodium](https://github.com/VSCodium/vscodium))
+https://www.kernel.org/doc/Documentation/input/joystick-api.txt
 
+[dart:ffi](https://dart.dev/guides/libraries/c-interop)
+
+## Final Demo
+
+Video of game playing full-screen with gamepad.
+
+## Q&A
+
+Thanks!

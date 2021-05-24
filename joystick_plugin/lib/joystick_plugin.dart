@@ -1,7 +1,4 @@
-//import 'dart:async';
 import 'dart:ffi';
-
-//import 'package:flutter/services.dart';
 
 DynamicLibrary joystickLib = DynamicLibrary.open('libjoystick_plugin_plugin.so');
 
@@ -9,13 +6,6 @@ typedef OpenFDC = Int32 Function();
 typedef OpenFDDart = int Function();
 
 final OpenFDDart openFD = joystickLib.lookup<NativeFunction<OpenFDC>>('openFD').asFunction();
-
-//struct js_event {
-//	__u32 time;	/* event timestamp in milliseconds */
-//	__s16 value;	/* value */
-//	__u8 type;	/* event type */
-//	__u8 number;	/* axis/button number */
-//};
 
 class JSEvent extends Struct {
   @Uint32()
