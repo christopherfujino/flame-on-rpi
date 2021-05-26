@@ -19,6 +19,12 @@ Must install from source: `git clone https://github.com/flutter/flutter -b stabl
 
 `$ bin/flutter config --enable-linux-desktop`
 
+## Game
+
+To run:
+
+`$ flutter run -d linux --release --dart-define=USES_GAMEPAD=TRUE`
+
 ## Debugging
 
 ```
